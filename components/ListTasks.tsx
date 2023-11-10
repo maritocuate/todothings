@@ -23,13 +23,11 @@ const ListTasks = ({ taskItems, completeTask }: ListTasksProps) => {
       <View style={styles.tasksWrapper}>
         <Text style={styles.sectionTitle}>Todays taks</Text>
         <View style={styles.items}>
-          {taskItems.map((item, index) => {
-            return (
-              <TouchableOpacity key={index} onPress={() => completeTask(index)}>
-                <Task text={item} />
-              </TouchableOpacity>
-            )
-          })}
+          {taskItems.map((item, index) => (
+            <TouchableOpacity key={index} onPress={() => completeTask(index)}>
+              <Task text={item} />
+            </TouchableOpacity>
+          ))}
         </View>
       </View>
     </ScrollView>

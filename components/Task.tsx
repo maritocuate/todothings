@@ -1,4 +1,5 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import * as Animatable from 'react-native-animatable'
 
 interface TaskProps {
   text: string
@@ -9,7 +10,9 @@ const Task = ({ text }: TaskProps) => {
     <View style={styles.item}>
       <View style={styles.itemLeft}>
         <View style={styles.square}></View>
-        <Text style={styles.itemText}>{text}</Text>
+        <Animatable.Text animation="bounceInRight" style={styles.itemText}>
+          {text}
+        </Animatable.Text>
       </View>
 
       <View style={styles.circular}></View>
