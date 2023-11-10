@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 
 interface TaskProps {
@@ -7,22 +7,19 @@ interface TaskProps {
 
 const Task = ({ text }: TaskProps) => {
   return (
-    <View style={styles.item}>
+    <Animatable.View style={styles.item} animation="bounceInRight">
       <View style={styles.itemLeft}>
         <View style={styles.square}></View>
-        <Animatable.Text animation="bounceInRight" style={styles.itemText}>
-          {text}
-        </Animatable.Text>
+        <Text style={styles.itemText}>{text}</Text>
       </View>
 
       <View style={styles.circular}></View>
-    </View>
+    </Animatable.View>
   )
 }
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: '#FFF',
     padding: 15,
     borderRadius: 10,
     flexDirection: 'row',
@@ -38,18 +35,18 @@ const styles = StyleSheet.create({
   square: {
     width: 24,
     height: 24,
-    backgroundColor: '#55BCF6',
-    opacity: 0.4,
+    backgroundColor: 'white',
     borderRadius: 5,
     marginRight: 15,
   },
   itemText: {
     maxWidth: '80%',
+    color: '#e2e2e2',
   },
   circular: {
     width: 12,
     height: 12,
-    borderColor: '#55BCF6',
+    borderColor: 'white',
     borderWidth: 2,
     borderRadius: 5,
   },

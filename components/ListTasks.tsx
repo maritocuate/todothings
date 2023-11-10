@@ -40,9 +40,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   sectionTitle: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
-    color: '#de0358',
+    color: '#ffff33',
+    textTransform: 'capitalize',
   },
   items: {
     marginTop: 30,

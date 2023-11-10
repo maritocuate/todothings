@@ -8,6 +8,7 @@ export default function App() {
   const [taskItems, setTaskItems] = useState<string[]>([])
 
   const handleAddTask = () => {
+    if (!task) return
     Keyboard.dismiss()
     setTaskItems([...taskItems, task])
     setTask('')
