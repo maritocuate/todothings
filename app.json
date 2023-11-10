@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "todothings",
-    "slug": "todothings",
+    "slug": "todo-things",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,16 +15,24 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mario300.todothings"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.mario300.todothings"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9acf474b-93f4-4105-a5fe-e7944e75843f"
+      }
+    },
+    "owner": "mario300"
   }
 }
