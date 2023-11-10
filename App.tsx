@@ -1,15 +1,7 @@
 import { useState } from 'react'
-import {
-  Keyboard,
-  KeyboardAvoidingView,
-  Platform,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native'
+import { Keyboard, StyleSheet, View } from 'react-native'
 import ListTasks from './components/ListTasks'
+import InputTask from './components/InputTask'
 
 export default function App() {
   const [task, setTask] = useState<string>('')
@@ -30,23 +22,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <ListTasks taskItems={taskItems} completeTask={completeTask} />
-
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.writeTaskWrapper}
-      >
-        <TextInput
-          style={styles.input}
-          placeholder="Write a task"
-          value={task}
-          onChangeText={text => setTask(text)}
-        ></TextInput>
-        <TouchableOpacity onPress={() => handleAddTask()}>
-          <View style={styles.addWrapper}>
-            <Text style={styles.addText}>+</Text>
-          </View>
-        </TouchableOpacity>
-      </KeyboardAvoidingView>
+      <InputTask task={task} setTask={setTask} handleAddTask={handleAddTask} />
     </View>
   )
 }
@@ -55,33 +31,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#323232',
-  },
-  writeTaskWrapper: {
-    position: 'absolute',
-    bottom: 60,
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  input: {
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    backgroundColor: '#FFF',
-    borderRadius: 60,
-    borderColor: '#C0C0C0',
-    borderWidth: 1,
-    width: 250,
-  },
-  addWrapper: {
-    width: 60,
-    height: 60,
-    backgroundColor: '#FFF',
-    borderRadius: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: '#C0C0C0',
-    borderWidth: 1,
   },
   addText: {},
 })
