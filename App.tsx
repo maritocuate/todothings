@@ -3,17 +3,16 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Platform,
-  ScrollView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native'
-import Task from './components/Task'
+import ListTasks from './components/ListTasks'
 
 export default function App() {
-  const [task, setTask] = useState<string>()
+  const [task, setTask] = useState<string>('')
   const [taskItems, setTaskItems] = useState<string[]>([])
 
   const handleAddTask = () => {
@@ -22,7 +21,7 @@ export default function App() {
     setTask('')
   }
 
-  const completeTask = index => {
+  const completeTask = (index: number) => {
     let itemsCopy = [...taskItems]
     itemsCopy.splice(index, 1)
     setTaskItems(itemsCopy)
@@ -30,28 +29,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <ScrollView
-        contentContainerStyle={{
-          flexGrow: 1,
-        }}
-        keyboardShouldPersistTaps="handled"
-      >
-        <View style={styles.tasksWrapper}>
-          <Text style={styles.sectionTitle}>Todays taks</Text>
-          <View style={styles.items}>
-            {taskItems.map((item, index) => {
-              return (
-                <TouchableOpacity
-                  key={index}
-                  onPress={() => completeTask(index)}
-                >
-                  <Task text={item} />
-                </TouchableOpacity>
-              )
-            })}
-          </View>
-        </View>
-      </ScrollView>
+      <ListTasks taskItems={taskItems} completeTask={completeTask} />
 
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -77,18 +55,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#323232',
-  },
-  tasksWrapper: {
-    paddingTop: 80,
-    paddingHorizontal: 20,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#de0358',
-  },
-  items: {
-    marginTop: 30,
   },
   writeTaskWrapper: {
     position: 'absolute',
